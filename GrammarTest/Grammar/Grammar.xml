@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grammar
+  version="1.0"
+  xml:lang="en-US"
+  root="niteliteCommands"
+  xmlns="http://www.w3.org/2001/06/grammar"
+  tag-format="semantics/1.0">
+
+  <rule id="niteliteCommands">
+   
+      <item>
+        <ruleref uri="#currentCommands"/>
+        <tag>out.command=rules.latest();</tag>
+      </item>
+   
+  </rule>
+
+  <rule id="currentCommands">
+    
+    <one-of>
+    <item>
+      <ruleref uri="#powerCommands"/>
+      <tag>out.command=rules.latest();</tag>
+    </item>
+    <item>
+      <ruleref uri="#soundTrackCommands"/>
+      <tag>out.command=rules.latest();</tag>
+    </item>
+    <item>
+      <ruleref uri="#panicCommands"/>
+      <tag>out.command=rules.latest();</tag>
+    </item>
+     <item>
+      <ruleref uri="#ironmancommands"/>
+      <tag>out.command=rules.latest();</tag>
+    </item>
+      <item>
+        <ruleref uri="#clockcommands"/>
+        <tag>out.command=rules.latest();</tag>
+      </item>
+      <item>
+        <ruleref uri="#soundTrackManagementCommands"/>
+        <tag>out.command=rules.latest();</tag>
+      </item>
+    </one-of>
+ 
+  </rule>
+  
+  
+  <rule id="powerCommands">
+    <item repeat="1">
+      turn light
+    </item>
+    <item>
+    <ruleref uri="#powerState"/>
+    <tag> out.powerstate=rules.latest(); </tag>
+    </item>
+  </rule>
+
+  <rule id="powerState">
+    <one-of>
+      <item>
+        ON
+        <tag>out = "on";</tag>
+      </item>
+      <item>
+        OFF
+        <tag>out = "off";</tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="soundTrackCommands">
+    <item repeat="0-1">
+      play 
+    </item>
+    <item>
+      <ruleref uri="#soundtracks"/>
+      <tag>  out.soundtrack=rules.latest();  </tag>
+    </item>
+  </rule>
+
+  <rule id="soundtracks">
+    <one-of>
+      <item>
+        soundtrack one
+        <tag>out = "one";</tag>
+      </item>
+      <item>
+        soundtrack two
+        <tag>out = "two";</tag>
+      </item>
+      <item>
+        soundtrack three
+        <tag>out = "three";</tag>
+      </item>
+      <item>
+        soundtrack four
+        <tag>out = "four";</tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="panicCommands">
+    <item repeat="0-1">
+      call
+    </item>
+    <item>
+      <ruleref uri="#parents"/>
+      <tag>  out.parents=rules.latest();  </tag>
+    </item>
+  </rule>
+
+  <rule id="parents">
+    <one-of>
+      <item>
+        MUMMY
+        <tag>out = "mummy";</tag>
+      </item>
+      <item>
+        DADDY
+        <tag>out = "daddy";</tag>
+      </item>
+      <!--<item>
+        emergency
+        <tag>out = "911";</tag>
+      </item>-->
+    </one-of>
+  </rule>
+  
+<rule id="ironmancommands">
+    <item repeat="0-1">
+      iron man color
+    </item>
+    <item>
+      <ruleref uri="#iron"/>
+      <tag>  out.parents=rules.latest();  </tag>
+    </item>
+  </rule>
+
+  <rule id="iron">
+    <one-of>
+      <item>
+        blue
+        <tag>out = "blue";</tag>
+      </item>
+      <item>
+        red 
+        <tag>out = "red";</tag>
+      </item>
+      <item>
+        green
+        <tag>out = "green";</tag>
+      </item>
+      <item>
+       off
+        <tag>out = "green";</tag>
+      </item>
+    </one-of>
+  </rule>
+  
+  <rule id="clockcommands">
+    <item repeat="1">
+      clock 
+    </item>
+    <item>
+      <ruleref uri="#clock"/>
+      <tag>  out.parents=rules.latest();  </tag>
+    </item>
+  </rule>
+
+  <rule id="clock">
+    <one-of>
+      <item>
+        on
+        <tag>out = "on";</tag>
+      </item>
+      <item>
+        off
+        <tag>out = "off";</tag>
+      </item>
+     
+    </one-of>
+  </rule>
+
+  <rule id="soundTrackManagementCommands">
+    <item repeat="1">
+      audio player
+    </item>
+    <item>
+      <ruleref uri="#pauseresumestopcommands"/>
+      <tag>  out.parents=rules.latest();  </tag>
+    </item>
+  </rule>
+  
+  <rule id="pauseresumestopcommands">
+    <one-of>
+      <item>
+        pause
+      </item>
+      <item>
+        stop
+      </item>
+      <item>
+        continue
+      </item>
+    </one-of>
+  </rule>
+</grammar>
