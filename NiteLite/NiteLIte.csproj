@@ -7,8 +7,8 @@
     <ProjectGuid>{BC478F2D-C254-45DA-A208-CF6A74781187}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GrammarTest</RootNamespace>
-    <AssemblyName>GrammarTest</AssemblyName>
+    <RootNamespace>NiteLIte</RootNamespace>
+    <AssemblyName>NiteLite</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
